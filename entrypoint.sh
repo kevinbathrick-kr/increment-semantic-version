@@ -17,7 +17,7 @@ main() {
     echo "could not read previous version"; exit 1
   fi
 
-  possible_release_types="major feature bug alpha beta rc"
+  possible_release_types="major minor patch alpha beta rc"
 
   if [[ ! ${possible_release_types[*]} =~ ${release_type} ]]; then
     echo "valid argument: [ ${possible_release_types[*]} ]"; exit 1
@@ -42,9 +42,9 @@ main() {
   case "$release_type" in
   "major")
     ((++major)); minor=0; patch=0; pre="";;
-  "feature")
+  "minor")
     ((++minor)); patch=0; pre="";;
-  "bug")
+  "patch")
     ((++patch)); pre="";;
   "alpha")
     if [[ -z "$preversion" ]];
